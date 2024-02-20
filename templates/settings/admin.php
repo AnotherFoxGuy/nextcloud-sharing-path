@@ -1,6 +1,6 @@
 <?php
 
-script(\OCA\SharingPath\AppInfo\Application::APP_ID, 'settings');
+script(\OCA\SharingPath\AppInfo\Application::APP_ID, 'sharingpath-settings');
 
 ?>
 

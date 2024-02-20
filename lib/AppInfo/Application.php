@@ -7,6 +7,7 @@ use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
+use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Files\IMimeTypeDetector;
 use OCP\Files\IRootFolder;
@@ -15,6 +16,7 @@ use OCP\IRequest;
 use OCP\IUserManager;
 use OCP\IUserSession;
 use OCP\Share\IManager as IShareManager;
+use OCP\Util;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
@@ -33,7 +35,6 @@ class Application extends App implements IBootstrap
     public function __construct(array $urlParams = [])
     {
         parent::__construct(self::APP_ID, $urlParams);
-
     }
 
     public function register(IRegistrationContext $context): void
@@ -51,13 +52,15 @@ class Application extends App implements IBootstrap
                 $c->get(IUserSession::class)
             );
         });
+        $context->registerEventListener(\OCA\Files\Event\LoadSidebar::class, self::class);
+        $context->registerEventListener(\OCA\Files\Event\LoadAdditionalScriptsEvent::class, self::class);
     }
 
     public function boot(IBootContext $context): void
     {
-        $this->getContainer()->get(IEventDispatcher::class)->addListener('OCA\Files::loadAdditionalScripts', function () {
-            script(self::APP_ID, 'script');
-        });
     }
-
+    public function handle(Event $event): void
+    {
+        Util::addScript(Application::APP_ID, 'sharingpath-main', 'files');
+    }
 }

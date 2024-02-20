@@ -1,5 +1,5 @@
 
-# Nextcloud Sharing Path  [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F51I62J)
+# Nextcloud Sharing Path
 
 Nextcloud app to enhance files sharing usage. Easy share, multi-use.
 

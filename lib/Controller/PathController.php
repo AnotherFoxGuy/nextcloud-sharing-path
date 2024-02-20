@@ -216,6 +216,7 @@ class PathController extends Controller
         header('Content-Transfer-Encoding: binary', true);
         header('Pragma: public');// enable caching in IE
         header('Expires: 0');
+    	header('Access-Control-Allow-Origin: *');
         header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
         $fileSize = Filesystem::filesize($filename);
         $type = $this->mimeTypeDetector->getSecureMimeType(Filesystem::getMimeType($filename));

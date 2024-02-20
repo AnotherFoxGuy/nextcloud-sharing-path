@@ -1,0 +1,45 @@
+{
+  "name": "sharingpath",
+  "description": "Files sharing use file store path.",
+  "version": "2.3.0",
+  "author": "Rookie0",
+  "contributors": [
+    "AnotherFoxGuy"
+  ],
+  "keywords": [
+    "nextcloud",
+    "files"
+  ],
+  "license": "agpl",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite --mode production build",
+    "dev": "vite --mode development build",
+    "watch": "vite --mode development build --watch",
+    "lint": "eslint cypress src",
+    "lint:fix": "eslint cypress src --fix",
+    "stylelint": "stylelint src",
+    "stylelint:fix": "stylelint src --fix",
+    "cypress": "npm run cypress:e2e",
+    "cypress:e2e": "cypress run --e2e",
+    "cypress:gui": "cypress open --e2e",
+    "cypress:pre-snapshots": "TESTING=true npm run dev",
+    "cypress:visual-regression": "npm run cypress:pre-snapshots && cypress run --spec cypress/e2e/visual-regression.cy.js",
+    "cypress:update-snapshots": "npm run cypress:pre-snapshots && cypress run --env type=base --spec cypress/e2e/visual-regression.cy.js --config screenshotsFolder=cypress/snapshots/base"
+  },
+  "dependencies": {
+    "@mdi/svg": "^7.3.67",
+    "@nextcloud/browserslist-config": "^3.0.0",
+    "@nextcloud/dialogs": "^4.2.5",
+    "@nextcloud/files": "^3.1.0",
+    "@nextcloud/router": "^3.0.0"
+  },
+  "browserslist": [
+    "extends @nextcloud/browserslist-config"
+  ],
+  "devDependencies": {
+    "@nextcloud/vite-config": "^1.2.2",
+    "vite": "^5.1.3"
+  }
+}
