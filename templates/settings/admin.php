@@ -1,7 +1,5 @@
 <?php
-
-script(\OCA\SharingPath\AppInfo\Application::APP_ID, 'sharingpath-settings');
-
+\OCP\Util::addScript(\OCA\SharingPath\AppInfo\Application::APP_ID, 'sharingpath-settings');
 ?>
 
 <div class="section" id="sharingPath">
@@ -12,7 +10,9 @@ script(\OCA\SharingPath\AppInfo\Application::APP_ID, 'sharingpath-settings');
                name="sharing_path_enabled"
                id="enableSharingPath"
                class="checkbox"
-            <?php if ($_['enabled'] === 'yes') print_unescaped('checked="checked"'); ?>
+            <?php if ($_['enabled'] === 'yes') {
+            	print_unescaped('checked="checked"');
+            } ?>
         />
         <label for="enableSharingPath">
             <?php p($l->t('Default') . ' ' . $l->t('Enable') . ' ' . $l->t('sharing') . ' ' . $l->t('path')); ?>

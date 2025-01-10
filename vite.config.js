@@ -5,4 +5,11 @@ export default createAppConfig({
 	settings: 'src/settings.js',
 }, {
 	minify: false,
+	nodePolyfills: {
+		globals: {
+			// Don't polyfill these globals
+			process: false,
+			Buffer: false,
+		},
+	}
 })

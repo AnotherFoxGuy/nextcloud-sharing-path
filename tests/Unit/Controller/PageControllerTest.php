@@ -1,19 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OCA\SharingPath\Tests\Unit\Controller;
-
-use PHPUnit_Framework_TestCase;
-
-use OCP\AppFramework\Http\TemplateResponse;
 
 use OCA\SharingPath\Controller\PageController;
 
+use OCP\AppFramework\Http\TemplateResponse;
+
+use PHPUnit_Framework_TestCase;
 
 class PageControllerTest extends PHPUnit_Framework_TestCase {
-	private $controller;
-	private $userId = 'john';
+	private ?\OCA\SharingPath\Controller\PageController $controller = null;
 
-	public function setUp() {
+	private string $userId = 'john';
+
+	public function setUp(): void {
 		$request = $this->getMockBuilder('OCP\IRequest')->getMock();
 
 		$this->controller = new PageController(
@@ -21,7 +23,7 @@ class PageControllerTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
-	public function testIndex() {
+	public function testIndex(): void {
 		$result = $this->controller->index();
 
 		$this->assertEquals('index', $result->getTemplateName());

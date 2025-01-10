@@ -1,6 +1,6 @@
 <?php
 
-script(\OCA\SharingPath\AppInfo\Application::APP_ID, 'sharingpath-settings');
+\OCP\Util::addScript(\OCA\SharingPath\AppInfo\Application::APP_ID, 'sharingpath-settings');
 
 ?>
 
@@ -12,12 +12,16 @@ script(\OCA\SharingPath\AppInfo\Application::APP_ID, 'sharingpath-settings');
                name="sharing_path_enabled"
                id="enableSharingPath"
                class="checkbox"
-            <?php if ($_['enabled'] === 'yes' || (! $_['enabled'] && $_['default_enabled'] === 'yes')) print_unescaped('checked="checked"'); ?>
+            <?php if ($_['enabled'] === 'yes' || (! $_['enabled'] && $_['default_enabled'] === 'yes')) {
+            	print_unescaped('checked="checked"');
+            } ?>
         />
         <label for="enableSharingPath">
             <?php p($l->t('Enable') . ' ' . $l->t('sharing') . ' ' . $l->t('path')); ?>
         </label>
-        <span class="settings-hint"><?php if ($_['default_enabled'] === 'yes' && ! $_['enabled']) print_unescaped('Set by admin'); ?></span>
+        <span class="settings-hint"><?php if ($_['default_enabled'] === 'yes' && ! $_['enabled']) {
+        	print_unescaped('Set by admin');
+        } ?></span>
     </p>
     <br />
     <p>
@@ -32,7 +36,9 @@ script(\OCA\SharingPath\AppInfo\Application::APP_ID, 'sharingpath-settings');
                style="width:300px;"
                value="<?php p($_['prefix'] ?: $_['default_prefix']); ?>"
         />
-        <span class="settings-hint"><?php if ($_['default_prefix'] && ! $_['prefix']) print_unescaped('Set by admin'); ?></span>
+        <span class="settings-hint"><?php if ($_['default_prefix'] && ! $_['prefix']) {
+        	print_unescaped('Set by admin');
+        } ?></span>
     </p>
     <br />
     <p>
@@ -46,6 +52,8 @@ script(\OCA\SharingPath\AppInfo\Application::APP_ID, 'sharingpath-settings');
                style="width:300px;"
                value="<?php p($_['folder'] ?: $_['default_folder']); ?>"
         />
-        <span class="settings-hint"><?php if ($_['default_folder'] && ! $_['folder']) print_unescaped('Set by admin, '); ?>❗⚠️❗️️All files in this folder can be accessed without share first.</span>
+        <span class="settings-hint"><?php if ($_['default_folder'] && ! $_['folder']) {
+        	print_unescaped('Set by admin, ');
+        } ?>❗⚠️❗️️All files in this folder can be accessed without share first.</span>
     </p>
 </div>

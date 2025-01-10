@@ -19,8 +19,9 @@ yarn-error.log*
 build/
 coverage/
 
-vendor
-.php_cs.cache
+/vendor/
+/vendor-bin/*/vendor/
+/.php-cs-fixer.cache
 
 # Cypress files
 js/*roboto*
@@ -37,3 +38,4 @@ webpack-stats.json
 node_modules
 /js/*
 /css/*
+
