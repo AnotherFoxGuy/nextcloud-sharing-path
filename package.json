@@ -26,7 +26,7 @@
     "@nextcloud/dialogs": "^6.0.1",
     "@nextcloud/files": "^3.10.1",
     "@nextcloud/router": "^3.0.1",
-    "vite-plugin-node-polyfills": "^0.22.0"
+    "vite-plugin-node-polyfills": "^0.24.0"
   },
   "browserslist": [
     "extends @nextcloud/browserslist-config"
